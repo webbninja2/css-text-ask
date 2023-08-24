@@ -43,7 +43,14 @@ document.addEventListener('DOMContentLoaded', function ()
     const colorStopInput        = document.getElementById('colorStopInput');
     const reflectOpacityRange   = document.getElementById('reflectOpacityRange');
     const reflectOpacityInput   = document.getElementById('reflectOpacityInput');
-    
+    // Animation Tab
+    const animationTab          = document.getElementById('animationTab');
+    const animationOptions      = document.querySelector('.animation-options');
+    const animationSpeed        = document.getElementById('animationSpeed');
+    const movePositionMax       = document.getElementById('movePositionMax');
+    const animationDirection    = document.getElementById('animationDirection');
+
+
     // GLOBAL ACTIVE TAB
     function activateTab(tabElement) {
         const tabs = document.querySelectorAll('.tab');
@@ -101,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function ()
         bgOptions.classList.add('hidden');
         strokeOptions.classList.add('hidden');
         reflectOptions.classList.add('hidden');
+        animationOptions.classList.add('hidden');
     });
     fontSizeInput.addEventListener('input', () => {
         const newSize = fontSizeInput.value + 'px';
@@ -125,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function ()
         sampleText.style.letterSpacing = newSpacing;
         letterSpacingInput.value = newSpacing.replace('px', '');
     });
-    
+
     // BACKGROUND TAB
     backgroundTab.addEventListener('click', () => {
         activateTab(backgroundTab);
@@ -133,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function ()
         sizeOptions.classList.add('hidden');
         strokeOptions.classList.add('hidden');
         reflectOptions.classList.add('hidden');
+        animationOptions.classList.add('hidden');
     });
 
     imageOptions.forEach(option => {
@@ -171,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function ()
         bgPositionYInput.value = parseInt(newYValue) || 0;
         updateBackgroundPosition();
     });
-    
+
     function updateBackgroundPosition() {
         const xPos = bgPositionXInput.value + '%';
         const yPos = bgPositionYInput.value + '%';
@@ -185,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function ()
         sizeOptions.classList.add('hidden');
         bgOptions.classList.add('hidden');
         reflectOptions.classList.add('hidden');
+        animationOptions.classList.add('hidden');
     });
 
     strokeWidthRange.addEventListener('input', () => {
@@ -211,13 +221,14 @@ document.addEventListener('DOMContentLoaded', function ()
         sizeOptions.classList.add('hidden');
         bgOptions.classList.add('hidden');
         strokeOptions.classList.add('hidden');
+        animationOptions.classList.add('hidden');
         const offsetValue = offsetInput.value;
         offsetRange.value = offsetValue;
         sampleText.style.textShadow = `0px ${offsetValue}px 0px rgba(0, 0, 0, 0.75)`;
         const reflection = `-webkit-box-reflect: below ${offsetValue}px -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), from(transparent), to(rgb(255, 255, 255)));`;
         sampleText.style.cssText = reflection;
     });
-        
+    
     offsetRange.addEventListener('input', () => {
         const offsetValue = offsetRange.value;
         offsetInput.value = offsetValue;
@@ -261,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function ()
         const reflection = `-webkit-box-reflect: below ${offsetValue}px -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), from(transparent), color-stop(${colorStopValue}, transparent), to(rgb(255, 255, 255, ${reflectOpacityValue})));`;
         sampleText.style.cssText = reflection;
     });
-    
+
     reflectOpacityInput.addEventListener('input', () => {
         const reflectOpacityValue = reflectOpacityInput.value;
         reflectOpacityRange.value = reflectOpacityValue;
@@ -271,10 +282,7 @@ document.addEventListener('DOMContentLoaded', function ()
         sampleText.style.cssText = reflection;
     });
 
-    // Animation Tab
-    const animationTab = document.getElementById('animationTab');
-    const animationOptions = document.querySelector('.animation-options');
-
+    // ANIMATION TAB
     animationTab.addEventListener('click', () => {
         activateTab(animationTab);
         animationOptions.classList.remove('hidden');
@@ -282,29 +290,35 @@ document.addEventListener('DOMContentLoaded', function ()
         bgOptions.classList.add('hidden');
         strokeOptions.classList.add('hidden');
         reflectOptions.classList.add('hidden');
+        updateAnimation();
     });
 
-    const animationSpeedInput = document.getElementById('animationSpeed');
-    const animationPositionSelect = document.getElementById('animationPosition');
-    const animationDirectionSelect = document.getElementById('animationDirection');
-    const movePositionMaxInput = document.getElementById('movePositionMax');
-
-    animationSpeedInput.addEventListener('input', () => {
-        // Handle animation speed input change
+    function updateAnimation() {
+        const speed = parseInt(document.getElementById('animationSpeed').value);
+        const direction = document.getElementById('animationDirection').value;
+        const movePositionMax = parseInt(document.getElementById('movePositionMax').value);
+        
+        const sampleText = document.getElementById('sampleText');
+        sampleText.style.animation = `textAnimation ${speed}s ${direction} infinite`;
+        
+        const styleSheet = document.styleSheets[0];
+        styleSheet.deleteRule(styleSheet.cssRules.length - 1);
+        styleSheet.insertRule(`@keyframes textAnimation {
+        0% { background-position: 0 0; }
+        100% { background-position: ${movePositionMax}px 0; }
+        }`, styleSheet.cssRules.length);
+    }
+    animationSpeed.addEventListener('input', () => {
+        updateAnimation();
     });
 
-    animationPositionSelect.addEventListener('change', () => {
-        // Handle animation position selection change
+    movePositionMax.addEventListener('input', () => {
+        updateAnimation();
     });
 
-    animationDirectionSelect.addEventListener('change', () => {
-        // Handle animation direction selection change
+    animationDirection.addEventListener('input', () => {
+        updateAnimation();
     });
-
-    movePositionMaxInput.addEventListener('input', () => {
-        // Handle move position maximum input change
-    });
-
 });   
     
 // GENERATE HTML AND CSS
@@ -401,6 +415,13 @@ function generateHtml(selectedTab) {
             '</div>';
 
     }
+    else if (selectedTab.id === 'animationTab') {
+        const textValue = dummyText.value || 'Sample Text';
+        return `<div class="${className}">` +
+            `${textValue}` +
+            '</div>';
+
+    }
 }
 
 function generateCss(selectedTab) {
@@ -487,6 +508,39 @@ function generateCss(selectedTab) {
 
         css += '    /* Add other CSS properties here */\n' +
             '}\n';
+    }
+    else if (selectedTab.id === 'animationTab') {
+        const speed = parseInt(document.getElementById('animationSpeed').value);
+        const direction = document.getElementById('animationDirection').value;
+        const movePositionMax = parseInt(document.getElementById('movePositionMax').value);
+        css += `.${className} {\n` +
+            `    font-size: ${fontSize.value}px;\n` +
+            `    letter-spacing: ${letterSpacing.value}px;\n`;
+            if (strokeWidthInput.value && rgbColor) {
+                css += `    -webkit-text-stroke: ${strokeWidthInput.value}px ${rgbColor};\n`;
+            }
+
+            if (sampleText.style.backgroundImage && sampleText.style.backgroundImage !== 'none') {
+                css += `    -webkit-background-clip: text;\n` +
+                    `    -webkit-text-fill-color: transparent;\n` +
+                    `    background-position: ${bgPositionXValue.value} ${bgPositionYValue.value};\n` +
+                    `    background-image: ${sampleText.style.backgroundImage};\n`;
+            }
+            else{
+                css += `    background-image: url(assets/images/mask-image1.jpg);\n` +
+                `    -webkit-background-clip: text;\n` +
+                `    -webkit-text-fill-color: transparent;\n`;
+            }
+
+        // Add animation-related properties
+        css += `    animation: textAnimation ${speed}s ${direction} infinite;\n` +
+            '}\n';
+
+        // Add @keyframes rule
+        css += `@keyframes textAnimation {
+            0% { background-position: 0 0; }
+            100% { background-position: ${movePositionMax}px 0; }
+        }\n`;
     }
 
     return css;

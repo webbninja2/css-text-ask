@@ -1,182 +1,182 @@
-<link rel="stylesheet" href="assets/css/custom.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-sm-8 form-generator">
-            <div class="GlobalOptions">
-                <div class="row options">
-                    <div class="col-md-6">
-                        <div class="text-content" id="textContent">
-                            <label>Enter Text:</label><br>
-                            <input type="text" id="dummyText" placeholder="Sample Text" maxlength="25">
+<!DOCTYPE html>  
+<html>  
+    <head>  
+        <title>CSS Text MASK</title>  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+        <style>
+            div#sampleText {font-size: 80px;height: 200px;margin: 20px auto;display: flex;align-items: center;justify-content: center;text-align: center;flex-direction: column;background-image: url('assets/images/mask-image1.jpg');-webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+        </style>
+    </head>      
+    <body>  
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 form-generator">
+                    <div class="GlobalOptions">
+                        <div class="row options">
+                            <div class="col-md-6">
+                                <div class="text-content" id="textContent">
+                                    <label>Enter Text:</label><br>
+                                    <input type="text" id="dummyText" placeholder="Sample Text" maxlength="25">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="background-colors">
+                                    <label>Select Background Color:</label><br>
+                                    <div class="color-box" id="whiteBox" style="background-color: white"></div>
+                                    <div class="color-box" id="blackBox" style="background-color: black"></div>
+                                    <div class="color-box" id="imageBackground" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAC1JREFUeNpiPHPmDAM2YGxsjFWciYFEMKqBGMD4//9/rBJnz54dDSX6aQAIMABCtQiAsDRF+wAAAABJRU5ErkJggg==');"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="col-md-6">
+                                <div class="upload-background">
+                                    <label for="imageUpload">Upload Text Background Image:</label>
+                                    <input type="file" id="imageUpload">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="font-family-dropdown">
+                                    <label for="fontFamilySelect">Font Family:</label><br>
+                                    <select id="fontFamilySelect">
+                                        <option>Select Font Family</option>
+                                        <option value="Arial, sans-serif">Arial</option>
+                                        <option value="Helvetica, sans-serif">Helvetica</option>
+                                        <option value="Times New Roman, serif">Times New Roman</option>
+                                        <option value="Georgia, serif">Georgia</option>
+                                        <option value="Courier New, monospace">Courier New</option>
+                                        <option value="Verdana, sans-serif">Verdana</option>
+                                        <option value="Tahoma, sans-serif">Tahoma</option>
+                                        <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+                                        <option value="Roboto, sans-serif">Roboto</option>
+                                        <option value="Open Sans, sans-serif">Open Sans</option>
+                                        <option value="Lato, sans-serif">Lato</option>
+                                        <option value="Montserrat, sans-serif">Montserrat</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row options">
+                            <div class="col-md-6">
+                                <div class="className">
+                                    <label>Class Name:</label><br>
+                                    <input type="text" id="classname" class="input-text" value="class-name" placeholder="class name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="bold-italic-options">
+                                    <label for="fontFamilySelect">Font Style:</label><br>
+                                    <div class="bold-italic-option" id="boldOption">B</div>
+                                    <div class="bold-italic-option italic" id="italicOption">I</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="background-colors">
-                            <label>Select Background Color:</label><br>
-                            <div class="color-box" id="whiteBox" style="background-color: white"></div>
-                            <div class="color-box" id="blackBox" style="background-color: black"></div>
-                            <div class="color-box" id="imageBackground" style="background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAC1JREFUeNpiPHPmDAM2YGxsjFWciYFEMKqBGMD4//9/rBJnz54dDSX6aQAIMABCtQiAsDRF+wAAAABJRU5ErkJggg==');"></div>
+                    <div class="boxLaoyut">
+                        <div class="box" id="box">
+                            <div id="sampleText">Sample Text</div>
                         </div>
                     </div>
-                </div>
-                <div class="row options">
-                    <div class="col-md-6">
-                        <div class="upload-background">
-                            <label for="imageUpload">Upload Text Background Image:</label>
-                            <input type="file" id="imageUpload">
+                    <div class="tab-container">
+                        <div class="tab active-tab" id="sizeTab">Size</div>
+                        <div class="tab" id="backgroundTab">Background</div>
+                        <div class="tab" id="reflectTab">Reflect</div>
+                        <div class="tab" id="strokeTab">Stroke</div>
+                        <div class="tab" id="animationTab">Animation</div>
+                    </div>
+                    <div class="generatorOptions">
+                        <!-- SIZE OPTIONS -->
+                        <div class="size-options">
+                            <div class="text-font">
+                                <label for="fontSize">Font Size:</label>
+                                <input type="range" id="fontSize" min="10" max="100" value="80">
+                                <input type="text" id="fontSizeValue" value="80px" style="width: 80px;">
+                            </div>
+                            <div class="letter-spacing">
+                                <label for="letterSpacing">Letter Spacing:</label>
+                                <input type="range" id="letterSpacing" min="-10" max="10" value="0">
+                                <input type="text" id="letterSpacingValue" value="0px" style="width: 80px;">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="font-family-dropdown">
-                            <label for="fontFamilySelect">Font Family:</label><br>
-                            <select id="fontFamilySelect">
-                                <option>Select Font Family</option>
-                                <option value="Arial, sans-serif">Arial</option>
-                                <option value="Helvetica, sans-serif">Helvetica</option>
-                                <option value="Times New Roman, serif">Times New Roman</option>
-                                <option value="Georgia, serif">Georgia</option>
-                                <option value="Courier New, monospace">Courier New</option>
-                                <option value="Verdana, sans-serif">Verdana</option>
-                                <option value="Tahoma, sans-serif">Tahoma</option>
-                                <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
-                                <option value="Roboto, sans-serif">Roboto</option>
-                                <option value="Open Sans, sans-serif">Open Sans</option>
-                                <option value="Lato, sans-serif">Lato</option>
-                                <option value="Montserrat, sans-serif">Montserrat</option>
-                            </select>
+                        <!-- SIZE OPTIONS -->
+                        <!-- BACKGROUND OPTIONS -->
+                        <div class="bg-options hidden" id="bgOptions">
+                            <div class="bg-image-options">
+                                <label>Background Image:</label><br>
+                                <div class="bgImages">
+                                    <div class="image-option" style="background-image: url('assets/images/mask-image1.jpg');"></div>
+                                    <div class="image-option" style="background-image: url('assets/images/mask-image2.jpg');"></div>
+                                    <div class="image-option" style="background-image: url('assets/images/mask-image3.jpg');"></div>
+                                    <div class="image-option" style="background-image: url('assets/images/mask-image4.jpg');"></div>
+                                </div>
+                            </div>
+                            <div class="bg-position">
+                                <label for="bgPositionX">BG Position X:</label>
+                                <input type="range" id="bgPositionX" min="0" max="100" value="50">
+                                <input type="text" id="bgPositionXValue" value="50%" style="width: 80px;">
+                            </div>
+                            <div class="bg-position">
+                                <label for="bgPositionY">BG Position Y:</label>
+                                <input type="range" id="bgPositionY" min="0" max="100" value="50">
+                                <input type="text" id="bgPositionYValue" value="50%" style="width: 80px;">
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row options">
-                    <div class="col-md-6">
-                        <div class="className">
-                            <label>Class Name:</label><br>
-                            <input type="text" id="classname" class="input-text" value="class-name" placeholder="class name">
+                        <!-- BACKGROUND OPTIONS -->
+                        <!-- REFLECT OPTIONS -->
+                        <div class="reflect-options hidden">
+                            <div class="offset-picker">
+                                <label for="offsetRange">Offset:</label>
+                                <input type="range" id="offsetRange" min="-120" max="-80" value="-120">
+                                <input type="number" id="offsetInput" min="-120" max="-80" value="-120" style="width: 80px;">
+                            </div>
+                            <div class="color-stop-picker">
+                                <label for="colorStopRange">Color-stop:</label>
+                                <input type="range" id="colorStopRange" min="0" max="1" step="0.1"  value="0.25">
+                                <input type="number" id="colorStopInput" min="0" max="1" step="0.1" value="0.25" style="width: 80px;">
+                            </div>
+                            <div class="reflect-opacity-picker">
+                                <label for="reflectOpacityRange">Reflect Opacity:</label>
+                                <input type="range" id="reflectOpacityRange" min="0" max="1" step="0.1" value="1">
+                                <input type="number" id="reflectOpacityInput" min="0" max="1" step="0.1" value="1" style="width: 80px;">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="bold-italic-options">
-                            <label for="fontFamilySelect">Font Style:</label><br>
-                            <div class="bold-italic-option" id="boldOption">B</div>
-                            <div class="bold-italic-option italic" id="italicOption">I</div>
+                        <!-- REFLECT OPTIONS -->
+                        <!-- STROKE OPTIONS -->
+                        <div class="stroke-options hidden">
+                            <div class="stroke-width-picker">
+                                <label for="strokeWidthRange">Stroke-width:</label>
+                                <input type="range" id="strokeWidthRange" min="0.1" max="10" step="0.1" value="1">
+                                <input type="number" id="strokeWidthInput" min="0.1" max="10" step="0.1" value="1" style="width: 80px;">
+                            </div>
+                            <div class="stroke-color-picker">
+                                <label for="strokeColor">Stroke Color:</label><br>
+                                <input type="color" id="strokeColor" value="#000000" style="width: 45px;height: 45px;">
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="boxLaoyut">
-                <div class="box" id="box">
-                    <div id="sampleText">Sample Text</div>
-                </div>
-            </div>
-            <div class="tab-container">
-                <div class="tab active-tab" id="sizeTab">Size</div>
-                <div class="tab" id="backgroundTab">Background</div>
-                <div class="tab" id="reflectTab">Reflect</div>
-                <div class="tab" id="strokeTab">Stroke</div>
-                <div class="tab" id="animationTab">Animation</div>
-            </div>
-            <div class="generatorOptions">
-                <!-- SIZE OPTIONS -->
-                <div class="size-options">
-                    <div class="text-font">
-                        <label for="fontSize">Font Size:</label>
-                        <input type="range" id="fontSize" min="10" max="100" value="80">
-                        <input type="text" id="fontSizeValue" value="80px" style="width: 80px;">
-                    </div>
-                    <div class="letter-spacing">
-                        <label for="letterSpacing">Letter Spacing:</label>
-                        <input type="range" id="letterSpacing" min="-10" max="10" value="0">
-                        <input type="text" id="letterSpacingValue" value="0px" style="width: 80px;">
-                    </div>
-                </div>
-                <!-- SIZE OPTIONS -->
-                <!-- BACKGROUND OPTIONS -->
-                <div class="bg-options hidden" id="bgOptions">
-                    <div class="bg-image-options">
-                        <label>Background Image:</label><br>
-                        <div class="bgImages">
-                            <div class="image-option" style="background-image: url('assets/images/css/bgimages/mask-image1.jpg');"></div>
-                            <div class="image-option" style="background-image: url('assets/images/css/bgimages/mask-image2.jpg');"></div>
-                            <div class="image-option" style="background-image: url('assets/images/css/bgimages/mask-image3.jpg');"></div>
-                            <div class="image-option" style="background-image: url('assets/images/css/bgimages/mask-image4.jpg');"></div>
-                            <div class="image-option" style="background-image: url('assets/images/css/bgimages/mask-image5.jpg');"></div>
+                        <!-- STROKE OPTIONS -->
+                        <!-- ANIMATION OPTIONS -->
+                        <div class="animation-options hidden">
+                            <label for="animationSpeed">Speed (secs):</label>
+                            <input type="number" id="animationSpeed" value="10" min="1" style="width: 80px;"><br>
+                            <label for="animationDirection">Direction:</label>
+                                <select id="animationDirection">
+                                    <option value="normal">Normal</option>
+                                    <option value="alternate">Alternate</option>
+                                </select><br>
+                            <label for="movePositionMax">Move Position Maximum:</label>
+                            <input type="number" id="movePositionMax" value="500" min="1" style="width: 80px;">
                         </div>
-                    </div>
-                    <div class="bg-position">
-                        <label for="bgPositionX">BG Position X:</label>
-                        <input type="range" id="bgPositionX" min="0" max="100" value="50">
-                        <input type="text" id="bgPositionXValue" value="50%" style="width: 80px;">
-                    </div>
-                    <div class="bg-position">
-                        <label for="bgPositionY">BG Position Y:</label>
-                        <input type="range" id="bgPositionY" min="0" max="100" value="50">
-                        <input type="text" id="bgPositionYValue" value="50%" style="width: 80px;">
+                        <!-- ANIMATION OPTIONS -->
+                        <button id="generateCodeButton"><img src="assets/images/tools2.png"> Generate Code</button>
                     </div>
                 </div>
-                <!-- BACKGROUND OPTIONS -->
-                <!-- REFLECT OPTIONS -->
-                <div class="reflect-options hidden">
-                    <div class="offset-picker">
-                        <label for="offsetRange">Offset:</label>
-                        <input type="range" id="offsetRange" min="-120" max="-80" value="-120">
-                        <input type="number" id="offsetInput" min="-120" max="-80" value="-120" style="width: 80px;">
-                    </div>
-                    <div class="color-stop-picker">
-                        <label for="colorStopRange">Color-stop:</label>
-                        <input type="range" id="colorStopRange" min="0" max="1" step="0.1"  value="0.25">
-                        <input type="number" id="colorStopInput" min="0" max="1" step="0.1" value="0.25" style="width: 80px;">
-                    </div>
-                    <div class="reflect-opacity-picker">
-                        <label for="reflectOpacityRange">Reflect Opacity:</label>
-                        <input type="range" id="reflectOpacityRange" min="0" max="1" step="0.1" value="1">
-                        <input type="number" id="reflectOpacityInput" min="0" max="1" step="0.1" value="1" style="width: 80px;">
-                    </div>
+                <div class="cols col_4_of_12">
+                    <h3>Sidebar</h3>
                 </div>
-                <!-- REFLECT OPTIONS -->
-                <!-- STROKE OPTIONS -->
-                <div class="stroke-options hidden">
-                    <div class="stroke-width-picker">
-                        <label for="strokeWidthRange">Stroke-width:</label>
-                        <input type="range" id="strokeWidthRange" min="0.1" max="10" step="0.1" value="1">
-                        <input type="number" id="strokeWidthInput" min="0.1" max="10" step="0.1" value="1" style="width: 80px;">
-                    </div>
-                    <div class="stroke-color-picker">
-                        <label for="strokeColor">Stroke Color:</label><br>
-                        <input type="color" id="strokeColor" value="#000000" style="width: 45px;height: 45px;">
-                    </div>
-                </div>
-                <!-- STROKE OPTIONS -->
-                <!-- ANIMATION OPTIONS -->
-                <div class="animation-options hidden">
-                    <label for="animationSpeed">Speed (secs):</label>
-                    <input type="number" id="animationSpeed" value="10" min="1">
-                    <br>
-                    <label for="animationPosition">Position:</label>
-                    <select id="animationPosition">
-                        <option value="left">Left</option>
-                        <option value="right">Right</option>
-                        <option value="top">Top</option>
-                        <option value="bottom">Bottom</option>
-                    </select>
-                    <br>
-                    <label for="animationDirection">Direction:</label>
-                    <select id="animationDirection">
-                        <option value="normal">Normal</option>
-                        <option value="alternate">Alternate</option>
-                    </select>
-                    <br>
-                    <label for="movePositionMax">Move Position Maximum:</label>
-                    <input type="number" id="movePositionMax" value="500" min="1">
-                </div>
-                <!-- ANIMATION OPTIONS -->
-                <button id="generateCodeButton"><img src="assets/images/tools/16x16/tools2.png"> Generate Code</button>
             </div>
         </div>
-        <div class="cols col_4_of_12">
-            <h3>Sidebar</h3>
-        </div>
-    </div>
-</div>
-<script src="assets/js/custom.js"></script>
+        <script src="assets/js/custom.js"></script>
+    </body>  
+</html>  
